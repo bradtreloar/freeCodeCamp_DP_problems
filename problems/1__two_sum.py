@@ -6,12 +6,13 @@ import unittest
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        hashmap = {v: i for i, v in enumerate(nums)}
+        hashmap = {}
         for i, num in enumerate(nums):
             diff = target - num
             j = hashmap.get(diff)
-            if j and i != j:
+            if j is not None:
                 return [i, j]
+            hashmap[num] = i
 
 
 class SolutionTest(unittest.TestCase):
@@ -36,4 +37,4 @@ class SolutionTest(unittest.TestCase):
 
         for nums, target, expected_result in fixtures:
             result = Solution().twoSum(nums, target)
-            self.assertEqual(expected_result, result)
+            self.assertEqual(sorted(expected_result), sorted(result))

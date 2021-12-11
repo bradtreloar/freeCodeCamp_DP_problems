@@ -11,7 +11,7 @@ class Solution:
             diff = target - num
             j = hashmap.get(diff)
             if j and i != j:
-                return [i, j] if i < j else [j, i]
+                return [i, j]
 
 
 class SolutionTest(unittest.TestCase):

@@ -19,22 +19,19 @@ class SolutionTest(unittest.TestCase):
     def test_solution(self):
         fixtures = [
             (
-                [2, 7, 11, 15],
-                9,
+                ([2, 7, 11, 15], 9),
                 [0, 1],
             ),
             (
-                [3, 2, 4],
-                6,
+                ([3, 2, 4], 6),
                 [1, 2],
             ),
             (
-                [3, 3],
-                6,
+                ([3, 3], 6),
                 [0, 1],
             ),
         ]
 
-        for nums, target, expected_result in fixtures:
-            result = Solution().twoSum(nums, target)
-            self.assertEqual(sorted(expected_result), sorted(result))
+        for inputs, output in fixtures:
+            result = Solution().twoSum(*inputs)
+            self.assertEqual(sorted(output), sorted(result))

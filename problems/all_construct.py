@@ -38,6 +38,15 @@ class SolutionTest(unittest.TestCase):
                 [["abc", "def"]],
             ),
             (
+                ("abcdef", ["ab", "abc", "cd", "def", "abcd", "ef", "c"]),
+                [
+                    ["ab", "cd", "ef"],
+                    ["abc", "def"],
+                    ["ab", "c", "def"],
+                    ["abcd", "ef"],
+                ],
+            ),
+            (
                 ("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"]),
                 [],
             ),
@@ -47,7 +56,7 @@ class SolutionTest(unittest.TestCase):
             ),
             (
                 ("purple", ["purp", "p", "ur", "le", "purpl"]),
-                [["purp", "le"], ["p", "ur", "p", "le"], ["p", "ur", "p", "le"]],
+                [["purp", "le"], ["p", "ur", "p", "le"]],
             ),
         ]
 
@@ -62,6 +71,7 @@ class SolutionTest(unittest.TestCase):
 
         for inputs, output in fixtures:
             solution = all_construct(*inputs)
+            self.assertEqual(len(output), len(solution))
             for target in output:
                 self.assertTrue(contains(solution, target),
                                 f"solution does not contain {target}\n\nSolution: {solution}")

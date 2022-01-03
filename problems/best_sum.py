@@ -20,8 +20,11 @@ def best_sum(target_sum: int, nums: List[int], memo=None) -> Optional[List[int]]
         remainder = target_sum - num
         solution = best_sum(remainder, nums, memo)
         if solution is not None:
-            if memo[target_sum] is None or len(solution) < len(memo[target_sum]):
-                memo[target_sum] = solution
+            no_prev_solutions = memo[target_sum] is None
+            is_better_solution = no_prev_solutions or len(
+                solution) < len(memo[target_sum])
+            if is_better_solution:
+                memo[target_sum] = [num, *solution]
     return memo[target_sum]
 
 

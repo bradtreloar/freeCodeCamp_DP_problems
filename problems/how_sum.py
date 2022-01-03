@@ -20,7 +20,7 @@ def how_sum(target_sum: int, nums: List[int], memo=None) -> Optional[List[int]]:
         solution = how_sum(remainder, nums, memo)
         if solution is not None:
             solution.append(num)
-            memo[target_sum] = True
+            memo[target_sum] = solution
             return solution
     memo[target_sum] = None
     return None

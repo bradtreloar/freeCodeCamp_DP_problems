@@ -44,6 +44,16 @@ class SolutionTest(unittest.TestCase):
                 ("", ["cat", "dog", "mouse"]),
                 True,
             ),
+            (
+                ("enterapotentpot", [
+                 "a", "p", "ent", "enter", "ot", "o", "t"]),
+                True,
+            ),
+            (
+                ("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", [
+                 "e", "ee", "eee", "eeee", "eeeee", "eeeeee"]),
+                True,
+            ),
         ]
 
         for inputs, output in fixtures:

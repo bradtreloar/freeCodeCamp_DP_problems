@@ -12,10 +12,11 @@ def how_sum(target_sum: int, nums: List[int]) -> Optional[List[int]]:
     for i in range(n):
         if table[i] is not None:
             for num in nums:
-                if i + num < n:
-                    if table[i + num] is None:
-                        table[i + num] = []
-                    cast(List[int], table[i + num]).append(num)
+                sum = i + num
+                if sum < n:
+                    if table[sum] is None:
+                        table[sum] = []
+                    cast(List[int], table[sum]).append(num)
     return table[target_sum]
 
 

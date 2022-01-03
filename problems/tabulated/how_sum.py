@@ -1,4 +1,3 @@
-# https://youtu.be/oBt53YbR9Kk?t=4198
 
 import sys
 from typing import cast, List, Optional, Tuple

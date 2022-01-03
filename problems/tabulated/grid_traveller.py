@@ -6,18 +6,18 @@ import unittest
 
 
 def grid_traveller(m: int, n: int) -> int:
+    if m == 0 or n == 0:
+        return 0
     table: List[List[int]] = []
-    for i in range(m + 1):
+    for i in range(m):
         table.append([])
-        for j in range(n + 1):
+        for j in range(n):
             if i == 0 or j == 0:
-                solution = 0
-            elif i == 1 or j == 1:
                 solution = 1
             else:
                 solution = table[i][j-1] + table[i-1][j]
             table[i].append(solution)
-    return table[m][n]
+    return table[m-1][n-1]
 
 
 class SolutionTest(unittest.TestCase):
@@ -25,9 +25,9 @@ class SolutionTest(unittest.TestCase):
         sys.setrecursionlimit(10000)
 
         fixtures = [
-            # ((0, 0), 0),
-            # ((0, 1), 0),
-            # ((1, 1), 1),
+            ((0, 0), 0),
+            ((0, 1), 0),
+            ((1, 1), 1),
             ((2, 2), 2),
             ((3, 3), 6),
             ((4, 2), 4),

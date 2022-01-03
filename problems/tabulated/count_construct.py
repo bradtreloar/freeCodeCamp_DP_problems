@@ -14,7 +14,6 @@ def count_construct(target_string: str, strings: List[str]) -> int:
                 j = i + len(string)
                 if j < n and target_string[i: j] == string:
                     table[j] += table[i]
-    print(target_string, table, table[len(target_string)])
     return table[len(target_string)]
 
 

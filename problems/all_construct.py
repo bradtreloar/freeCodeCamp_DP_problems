@@ -23,7 +23,7 @@ def all_construct(target_string: str, strings: List[str], memo=None) -> List[Lis
             remainder = target_string[len(string):]
             solution = all_construct(remainder, strings, memo)
             if len(solution) > 0:
-                solution = [[*s, string] for s in solution]
+                solution = [[string, *s] for s in solution]
                 memo[target_string].extend(solution)
     return memo[target_string]
 
@@ -63,7 +63,7 @@ class SolutionTest(unittest.TestCase):
         def contains(solution, target):
             for s in solution:
                 try:
-                    self.assertEqual(sorted(s), sorted(target))
+                    self.assertEqual(s, target)
                     return True
                 except AssertionError:
                     pass
